@@ -1,0 +1,20 @@
+{
+  "name": "com.rstar.hfsm.extensions",
+  "displayName": "Unity - HFSMExtensions",
+  "description": "擴充HFSM，並支援Zenject",
+  "version": "0.1.0",
+  "unity": "2022.3",
+  "unityRelease": "8f1",
+  "dependencies": {
+    "com.inspiaaa.unityhfsm":"2.0.0"
+  },
+  "author": {
+    "name": "rStar",
+    "email": "starlove124760@gmail.com",
+    "url": "https://www.youtube.com/c/rStarStudio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/L1247/UnityHFSMExtensions.git"
+  }
+}
