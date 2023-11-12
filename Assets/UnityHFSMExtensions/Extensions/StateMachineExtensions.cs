@@ -13,6 +13,11 @@ namespace UnityHFSMExtensions.Extensions
     {
     #region Public Methods
 
+        public static void AddState(this StateMachine stateMachine , State state)
+        {
+            stateMachine.AddState(state.GetType().Name , state);
+        }
+
         public static void AddStates(this StateMachine stateMachine , List<string> states)
         {
             states.ForEach(state => stateMachine.AddState(state));
@@ -43,6 +48,18 @@ namespace UnityHFSMExtensions.Extensions
         public static void AddTriggerTransitionFromAnyList(this StateMachine stateMachine , List<TriggerTransitionFromAny> list)
         {
             list.ForEach(t => stateMachine.AddTriggerTransitionFromAny(t.Trigger , t.ToState));
+        }
+
+        public static string GetCurrentStateName(this StateMachine stateMachine)
+        {
+            return stateMachine.GetState(stateMachine.ActiveStateName).GetType().Name;
+        }
+
+        public static bool HasState(this StateMachine stateMachine , string stateName)
+        {
+            var state = stateMachine.GetState(stateName);
+            if (state == null) return false;
+            return state.GetType().Name == stateName;
         }
 
     #endregion
