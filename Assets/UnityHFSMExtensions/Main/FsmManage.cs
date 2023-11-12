@@ -3,13 +3,15 @@
 using System.Collections.Generic;
 using UnityEngine.Assertions;
 using UnityHFSM;
+using UnityHFSMExtensions.Extensions;
 using UnityHFSMExtensions.Interfaces;
+using UnityHFSMExtensions.Zenject;
 using Zenject;
 using Transition = UnityHFSMExtensions.Interfaces.Transition;
 
 #endregion
 
-namespace UnityHFSMExtensions
+namespace UnityHFSMExtensions.Main
 {
     public class FsmManager : IInitializable , ITickable
     {

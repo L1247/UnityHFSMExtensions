@@ -1,4 +1,4 @@
-namespace UnityHFSMExtensions
+namespace UnityHFSMExtensions.Zenject
 {
     public static class FsmZenjectIds
     {

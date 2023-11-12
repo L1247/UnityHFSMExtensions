@@ -7,7 +7,7 @@ using Transition = UnityHFSMExtensions.Interfaces.Transition;
 
 #endregion
 
-namespace UnityHFSMExtensions
+namespace UnityHFSMExtensions.Extensions
 {
     public static class StateMachineExtensions
     {
