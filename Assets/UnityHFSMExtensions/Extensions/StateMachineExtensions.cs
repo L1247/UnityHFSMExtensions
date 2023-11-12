@@ -13,7 +13,7 @@ namespace UnityHFSMExtensions.Extensions
     {
     #region Public Methods
 
-        public static void AddState(this StateMachine stateMachine , State state)
+        public static void AddStateByInstance(this StateMachine stateMachine , State state)
         {
             stateMachine.AddState(state.GetType().Name , state);
         }
