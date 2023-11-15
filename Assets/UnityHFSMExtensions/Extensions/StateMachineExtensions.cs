@@ -52,7 +52,8 @@ namespace UnityHFSMExtensions.Extensions
 
         public static string GetCurrentStateName(this StateMachine stateMachine)
         {
-            return stateMachine.GetState(stateMachine.ActiveStateName).GetType().Name;
+            return stateMachine.ActiveStateName;
+            // return stateMachine.GetState(stateMachine.ActiveStateName).GetType().Name;
         }
 
         public static bool HasState(this StateMachine stateMachine , string stateName)

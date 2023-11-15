@@ -25,6 +25,9 @@ namespace Sample.Scripts
             {
                 Debug.Log($"{fsmManager.GetState("A").name}");
                 Debug.Log($"{fsmManager.GetState<TestState>().name}");
+                Debug.Log($"{fsmManager.GetCurrentStateName()}");
+                fsmManager.ChangeState(nameof(TestState));
+                Debug.Log($"{fsmManager.GetCurrentStateName()}");
             }
         }
 
