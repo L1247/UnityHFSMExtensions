@@ -45,6 +45,16 @@ namespace UnityHFSMExtensions.Main
 
     #region Public Methods
 
+        public void ChangeState(string stateName)
+        {
+            fsm.RequestStateChange(stateName , true);
+        }
+
+        public string GetCurrentStateName()
+        {
+            return fsm.GetCurrentStateName();
+        }
+
         public T GetState<T>() where T : State
         {
             return (T)fsm.GetState(typeof(T).Name);

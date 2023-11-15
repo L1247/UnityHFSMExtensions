@@ -2,7 +2,7 @@
   "name": "com.rstar.hfsm.extensions",
   "displayName": "Unity - HFSMExtensions",
   "description": "擴充HFSM，並支援Zenject",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "unity": "2022.3",
   "unityRelease": "8f1",
   "dependencies": {
