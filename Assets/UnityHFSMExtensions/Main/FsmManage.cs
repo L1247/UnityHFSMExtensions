@@ -45,9 +45,19 @@ namespace UnityHFSMExtensions.Main
 
     #region Public Methods
 
+        public T GetState<T>() where T : State
+        {
+            return (T)fsm.GetState(typeof(T).Name);
+        }
+
+        public StateBase<string> GetState(string stateName)
+        {
+            return fsm.GetState(stateName);
+        }
+
         public void Initialize()
         {
-            Assert.IsTrue(states.Count > 0 , "no any states.");
+            Assert.IsTrue(states.Count > 0 || stringStates.Count > 0 , "has no state.");
             fsm.AddStates(stringStates);
             fsm.AddStates(states);
             fsm.AddTriggerTransitionFromAnyList(triggerTransitionFromAnyList);
