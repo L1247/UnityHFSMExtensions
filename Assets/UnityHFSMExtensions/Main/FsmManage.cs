@@ -83,6 +83,11 @@ namespace UnityHFSMExtensions.Main
             fsm.OnLogic();
         }
 
+        public void Trigger(string trigger)
+        {
+            fsm.Trigger(trigger);
+        }
+
     #endregion
     }
 }
