@@ -21,7 +21,7 @@ namespace Sample.Scripts
 
         public void Tick()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && fsmManager.Initialized)
             {
                 Debug.Log($"{fsmManager.GetState("A").name}");
                 Debug.Log($"{fsmManager.GetState<TestState>().name}");

@@ -15,6 +15,17 @@ namespace UnityHFSMExtensions.Main
 {
     public class FsmManager : IInitializable , ITickable
     {
+    #region Public Variables
+
+        public const string AutoStartFsm = "AutoStartFsm";
+
+        /// <summary>
+        ///     is Initialized
+        /// </summary>
+        public bool Initialized { get; }
+
+    #endregion
+
     #region Private Variables
 
         [Inject]
@@ -41,6 +52,9 @@ namespace UnityHFSMExtensions.Main
         [Inject]
         private List<Transition> transitionList;
 
+        [Inject(Id = AutoStartFsm , Optional = true)]
+        private bool autoStart = true;
+
     #endregion
 
     #region Public Methods
@@ -65,8 +79,12 @@ namespace UnityHFSMExtensions.Main
             return fsm.GetState(stateName);
         }
 
-        public void Initialize()
+        /// <summary>
+        ///     Manual initialize.
+        /// </summary>
+        public void Init()
         {
+            if (Initialized) return;
             Assert.IsTrue(states.Count > 0 || stringStates.Count > 0 , "has no state.");
             fsm.AddStates(stringStates);
             fsm.AddStates(states);
@@ -78,8 +96,15 @@ namespace UnityHFSMExtensions.Main
             fsm.Init();
         }
 
+        public void Initialize()
+        {
+            if (autoStart == false) return;
+            Init();
+        }
+
         public void Tick()
         {
+            if (Initialized == false) return;
             fsm.OnLogic();
         }
 
