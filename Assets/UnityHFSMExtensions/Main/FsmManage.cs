@@ -22,7 +22,7 @@ namespace UnityHFSMExtensions.Main
         /// <summary>
         ///     is Initialized
         /// </summary>
-        public bool Initialized { get; }
+        public bool Initialized { get; private set; }
 
     #endregion
 
@@ -94,6 +94,7 @@ namespace UnityHFSMExtensions.Main
             fsm.AddTransitionList(transitionList);
             fsm.SetStartState(startStateName);
             fsm.Init();
+            Initialized = true;
         }
 
         public void Initialize()
