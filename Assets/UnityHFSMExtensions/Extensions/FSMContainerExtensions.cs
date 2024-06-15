@@ -22,7 +22,8 @@ namespace UnityHFSMExtensions.Extensions
             Assert.IsTrue(container.HasBinding<FsmManager>() == false ,
                           $"already binding {GetColorString(Color.red , "[FsmManage]")}");
             Bind_StateMachine(container);
-            container.BindInterfacesAndSelfTo<FsmManager>().AsSingle();
+            container.BindInitializableExecutionOrder<FsmManager>(-1000);
+            container.BindInterfacesAndSelfTo<FsmManager>().AsSingle().NonLazy();
         }
 
         public static void Bind_Start_State(this DiContainer container , string stateName)

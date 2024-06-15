@@ -13,7 +13,7 @@ using Transition = UnityHFSMExtensions.Interfaces.Transition;
 
 namespace UnityHFSMExtensions.Main
 {
-    public class FsmManager : ITickable
+    public class FsmManager : IInitializable , ITickable
     {
     #region Public Variables
 
@@ -74,11 +74,30 @@ namespace UnityHFSMExtensions.Main
             return fsm.GetState(stateName);
         }
 
+        public void Initialize()
+        {
+            Init();
+        }
+
+        public void Tick()
+        {
+            if (Initialized == false) return;
+            fsm.OnLogic();
+        }
+
+        public void Trigger(string trigger)
+        {
+            fsm.Trigger(trigger);
+        }
+
+    #endregion
+
+    #region Private Methods
+
         /// <summary>
         ///     Manual initialize.
         /// </summary>
-        [Inject]
-        public void Init()
+        private void Init()
         {
             if (Initialized) return;
             Assert.IsTrue(states.Count > 0 || stringStates.Count > 0 , "has no state.");
@@ -91,17 +110,6 @@ namespace UnityHFSMExtensions.Main
             fsm.SetStartState(startStateName);
             fsm.Init();
             Initialized = true;
-        }
-
-        public void Tick()
-        {
-            if (Initialized == false) return;
-            fsm.OnLogic();
-        }
-
-        public void Trigger(string trigger)
-        {
-            fsm.Trigger(trigger);
         }
 
     #endregion
