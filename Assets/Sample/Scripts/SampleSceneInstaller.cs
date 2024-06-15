@@ -18,6 +18,7 @@ public class SampleSceneInstaller : MonoInstaller
         Container.Bind_State("C");
         Container.Bind_State<TestState>();
         Container.Bind_Start_State("A");
+        Container.Bind_Transition<TransitionTest>();
 
         Container.BindInterfacesTo<LogState>().AsSingle();
     }
