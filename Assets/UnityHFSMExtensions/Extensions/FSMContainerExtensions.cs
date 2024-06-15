@@ -17,14 +17,12 @@ namespace UnityHFSMExtensions.Extensions
     {
     #region Public Methods
 
-        public static void Bind_FSM(this DiContainer container , bool autoStartFsm = true)
+        public static void Bind_FSM(this DiContainer container)
         {
             Assert.IsTrue(container.HasBinding<FsmManager>() == false ,
                           $"already binding {GetColorString(Color.red , "[FsmManage]")}");
             Bind_StateMachine(container);
-            container.BindInstance(autoStartFsm).WithId(FsmManager.AutoStartFsm);
             container.BindInterfacesAndSelfTo<FsmManager>().AsSingle();
-            container.BindInitializableExecutionOrder<FsmManager>(-1000);
         }
 
         public static void Bind_Start_State(this DiContainer container , string stateName)

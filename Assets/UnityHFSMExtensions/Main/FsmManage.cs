@@ -13,11 +13,9 @@ using Transition = UnityHFSMExtensions.Interfaces.Transition;
 
 namespace UnityHFSMExtensions.Main
 {
-    public class FsmManager : IInitializable , ITickable
+    public class FsmManager : ITickable
     {
     #region Public Variables
-
-        public const string AutoStartFsm = "AutoStartFsm";
 
         /// <summary>
         ///     is Initialized
@@ -52,9 +50,6 @@ namespace UnityHFSMExtensions.Main
         [Inject]
         private List<Transition> transitionList;
 
-        [Inject(Id = AutoStartFsm , Optional = true)]
-        private bool autoStart = true;
-
     #endregion
 
     #region Public Methods
@@ -82,6 +77,7 @@ namespace UnityHFSMExtensions.Main
         /// <summary>
         ///     Manual initialize.
         /// </summary>
+        [Inject]
         public void Init()
         {
             if (Initialized) return;
@@ -95,12 +91,6 @@ namespace UnityHFSMExtensions.Main
             fsm.SetStartState(startStateName);
             fsm.Init();
             Initialized = true;
-        }
-
-        public void Initialize()
-        {
-            if (autoStart == false) return;
-            Init();
         }
 
         public void Tick()

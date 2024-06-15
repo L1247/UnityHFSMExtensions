@@ -12,7 +12,7 @@ public class SampleSceneInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind_FSM(false);
+        Container.Bind_FSM();
         Container.Bind_State("A");
         Container.Bind_State("B");
         Container.Bind_State("C");
