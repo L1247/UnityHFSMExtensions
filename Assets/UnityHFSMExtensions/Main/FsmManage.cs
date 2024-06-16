@@ -42,6 +42,9 @@ namespace UnityHFSMExtensions.Main
         private List<TriggerTransitionFromAny> triggerTransitionFromAnyList;
 
         [Inject]
+        private List<TriggerTransitions> triggerTransitionsList;
+
+        [Inject]
         private List<TransitionFromAny> transitionFromAnyList;
 
         [Inject]
@@ -104,6 +107,7 @@ namespace UnityHFSMExtensions.Main
             fsm.AddStates(stringStates);
             fsm.AddStates(states);
             fsm.AddTriggerTransitionFromAnyList(triggerTransitionFromAnyList);
+            fsm.AddTriggerTransitions(triggerTransitionsList);
             fsm.AddTransitionFromAnyList(transitionFromAnyList);
             fsm.AddTransitionsList(transitionsList);
             fsm.AddTransitionList(transitionList);

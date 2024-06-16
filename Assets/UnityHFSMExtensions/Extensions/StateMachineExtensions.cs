@@ -50,6 +50,11 @@ namespace UnityHFSMExtensions.Extensions
             list.ForEach(t => stateMachine.AddTriggerTransitionFromAny(t.Trigger , t.ToState));
         }
 
+        public static void AddTriggerTransitions(this StateMachine stateMachine , List<TriggerTransitions> list)
+        {
+            list.ForEach(t => t.FromStates.ForEach(from => stateMachine.AddTriggerTransition(t.Trigger , from , t.ToState)));
+        }
+
         public static string GetCurrentStateName(this StateMachine stateMachine)
         {
             return stateMachine.ActiveStateName;

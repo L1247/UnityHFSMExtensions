@@ -68,6 +68,11 @@ namespace UnityHFSMExtensions.Extensions
             container.Bind(typeof(TriggerTransitionFromAny)).To<T>().AsSingle();
         }
 
+        public static void Bind_TriggerTransitions<T>(this DiContainer container) where T : TriggerTransitions
+        {
+            container.Bind(typeof(TriggerTransitions)).To<T>().AsSingle();
+        }
+
         public static string GetColorString(Color color , string str)
         {
             var colorText = color == Color.red ? "red" : "white";
