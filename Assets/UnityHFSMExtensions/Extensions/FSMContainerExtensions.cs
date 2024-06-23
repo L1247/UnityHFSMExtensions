@@ -18,11 +18,12 @@ namespace UnityHFSMExtensions.Extensions
 
         public static void Bind_FSM(this DiContainer container)
         {
-            // Assert.IsTrue(container.HasBinding<FsmManager>() == false ,
-            // $"already binding {GetColorString(Color.red , "[FsmManage]")}");
+            var hasBinding = container.HasBinding<FsmManager>();
+            if (hasBinding) return;
+            // Assert.IsTrue(hasBinding == false , $"already binding {GetColorString(Color.red , "[FsmManage]")}");
             Bind_StateMachine(container);
             container.BindInitializableExecutionOrder<FsmManager>(-1000);
-            container.BindInterfacesAndSelfTo<FsmManager>().AsSingle().NonLazy().IfNotBound();
+            container.BindInterfacesAndSelfTo<FsmManager>().AsSingle().NonLazy();
         }
 
         public static void Bind_Start_State(this DiContainer container , string stateName)
@@ -42,9 +43,10 @@ namespace UnityHFSMExtensions.Extensions
 
         public static void Bind_StateMachine(this DiContainer container)
         {
-            // Assert.IsTrue(container.HasBinding<StateMachine>() == false ,
-            // $"already binding {GetColorString(Color.red , "StateMachine")}");
-            container.Bind<StateMachine>().AsSingle().IfNotBound();
+            var hasBinding = container.HasBinding<StateMachine>();
+            if (hasBinding) return;
+            // Assert.IsTrue(hasBinding , $"already binding {GetColorString(Color.red , "StateMachine")}");
+            container.Bind<StateMachine>().AsSingle();
         }
 
         public static void Bind_Transition<T>(this DiContainer container) where T : Transition
