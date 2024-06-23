@@ -1,7 +1,6 @@
 #region
 
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Assertions;
 using UnityHFSM;
 using UnityHFSMExtensions.Extensions;
@@ -80,7 +79,6 @@ namespace UnityHFSMExtensions.Main
 
         public void Initialize()
         {
-            Debug.Log("Initialize");
             Init();
         }
 
