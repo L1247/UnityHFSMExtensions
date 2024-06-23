@@ -1,7 +1,6 @@
 #region
 
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityHFSM;
 using UnityHFSMExtensions.Interfaces;
 using UnityHFSMExtensions.Main;
@@ -43,8 +42,8 @@ namespace UnityHFSMExtensions.Extensions
 
         public static void Bind_StateMachine(this DiContainer container)
         {
-            Assert.IsTrue(container.HasBinding<StateMachine>() == false ,
-                          $"already binding {GetColorString(Color.red , "StateMachine")}");
+            // Assert.IsTrue(container.HasBinding<StateMachine>() == false ,
+            // $"already binding {GetColorString(Color.red , "StateMachine")}");
             container.Bind<StateMachine>().AsSingle().IfNotBound();
         }
 
